@@ -10,10 +10,12 @@ export interface StateInterface {
   // example: ExampleStateInterface;
   // Declared as unknown to avoid linting issue. Best to strongly type as per the line above.
   // example: ExampleStateInterface
+  example: unknown
 }
 
 export default createStore<StateInterface>({
   modules: {
     // example: exampleModule
+    examples: {}
   }
 })
