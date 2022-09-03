@@ -1,11 +1,23 @@
 import { ActionTree } from 'vuex';
-import { ExampleStateInterface } from './state';
+import { PlacesState } from './state';
 import { StateInterface } from '../index';
 
 
-const actions: ActionTree<ExampleStateInterface, StateInterface> = {
-    someAction( /*{ commit }, payload  */ ) {
-        // a line to prevent linter errors
+const actions: ActionTree<PlacesState, StateInterface> = {
+    getInitialLocation( { commit } ) {
+        
+        // todo: colocar loading
+
+        navigator.geolocation.getCurrentPosition(
+            ( { coords } ) => commit('setLngLat', coords),
+            ( err ) => {
+
+                console.log(err);
+                throw new Error( 'No geolocation :( ')
+
+            }
+        )
+
     }
 }
 

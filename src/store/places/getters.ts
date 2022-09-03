@@ -1,12 +1,12 @@
 
 import { GetterTree } from 'vuex';
-import { ExampleStateInterface } from './state';
+import { PlacesState } from './state';
 import { StateInterface } from '../index';
 
 
-const getters: GetterTree<ExampleStateInterface, StateInterface> = {
-    someGetter( /* state */ ) {
-        // return true;
+const getters: GetterTree<PlacesState, StateInterface> = {
+    isUserlocationReady( state ) {
+        return !!state.userLocation;
     }
 }
 

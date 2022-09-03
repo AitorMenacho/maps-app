@@ -1,10 +1,12 @@
-export interface ExampleStateInterface {
-    prop: boolean;
+export interface PlacesState {
+    isLoading: boolean;
+    userLocation?: [number,  number]; //lng, lat
 }
 
-function state(): ExampleStateInterface {
+function state(): PlacesState {
     return {
-        prop: true,
+        isLoading: true,
+        userLocation: undefined,
     }
 }
 
