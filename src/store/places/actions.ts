@@ -9,7 +9,7 @@ const actions: ActionTree<PlacesState, StateInterface> = {
         // todo: colocar loading
 
         navigator.geolocation.getCurrentPosition(
-            ( { coords } ) => commit('setLngLat', coords),
+            ( { coords } ) => commit('setLngLat', { lng: coords.longitude, lat: coords.latitude }),
             ( err ) => {
 
                 console.log(err);
