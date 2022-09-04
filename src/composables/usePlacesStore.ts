@@ -17,6 +17,7 @@ export const usePlacesStore = () => {
 
     })
 
+
     return {
 
         // State
@@ -24,7 +25,7 @@ export const usePlacesStore = () => {
         userLocation: computed( () => store.state.places.userLocation ),
 
         // Getters
-        isUserLocationReady: computed<boolean>( () => store.getters['places/isUserlocationReady'] )
+        isUserLocationReady: computed<boolean>( () => store.getters['places/isUserlocationReady'] ),        
 
         //Actions
 
