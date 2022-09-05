@@ -1,5 +1,5 @@
 import { defineComponent, ref, onMounted, watch } from "vue";
-import { usePlacesStore } from "@/composables/usePlacesStore";
+import { usePlacesStore, useMapStore } from "@/composables";
 import Mapboxgl from "mapbox-gl";
 
 export default defineComponent({
@@ -7,8 +7,10 @@ export default defineComponent({
   setup() {
     const mapElement = ref<HTMLDivElement>();
     const { userLocation, isUserLocationReady } = usePlacesStore();
+    const { setMap } = useMapStore()
 
     const initMap = async() => {
+
       if (!mapElement.value) throw new Error("Div Element no exist");
       if (!userLocation.value) throw new Error("user location no exist");
 
@@ -24,13 +26,19 @@ export default defineComponent({
         map.setFog({}); // Set the default atmosphere style
       });
 
-      const myLocationPopup = new Mapboxgl.Popup()
+      const myLocationPopup = new Mapboxgl.Popup({ offset: [ 0, -25 ] })
         .setLngLat( userLocation.value )
-        .setHTML(``)
+        .setHTML(`
+          <h4>Aquí estoy</h4>
+          <p>Actualmente en Madrid</p>
+        `)
 
       const myLocationMarker = new Mapboxgl.Marker()
         .setLngLat( userLocation.value )
+        .setPopup( myLocationPopup )
         .addTo( map )
+
+        setMap( map )
 
     };
 
