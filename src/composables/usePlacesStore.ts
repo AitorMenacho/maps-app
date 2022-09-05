@@ -28,6 +28,7 @@ export const usePlacesStore = () => {
         isUserLocationReady: computed<boolean>( () => store.getters['places/isUserlocationReady'] ),        
 
         //Actions
+        searchPlacesByTerm: ( query: string ) => store.dispatch('places/searchPlacesByTerm', query),
 
         //Mutations
     }
