@@ -23,6 +23,7 @@
         z-index: 999;
         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
         width: 250px;
-        border-radius: 15px !important;
+        border-radius: 10px !important;
+        padding: 5px;
     }
 </style>

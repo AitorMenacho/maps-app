@@ -1,29 +1,33 @@
 <script lang="ts" src="./SearchResults.ts" />
 
 <template>
-  <ul class="list-group mt-3">
-    <li class="list-group-item list-grup-item-action">
-      <h5>Nombre del lugar</h5>
-      <p>
-        Exercitation laborum Lorem aliqua velit nulla proident in aute ut ea sit
-        anim.
-      </p>
+
+  <div v-if="isLoadingPlaces" 
+    class="alert alert-primary text-center">
+    <h5>Cargando...</h5>
+    <span>Espere por favor</span>
+  </div>
+
+  <ul v-else-if="places.length > 0"
+    class="list-group mt-3">
+
+    <li  v-for="place in places"
+        class="list-group-item list-grup-item-action"
+        :class="{ 'active' : place.id === activePlace }"
+        :key="place.id"
+        @click="onPlaceClicked( place )">
+      <h5>{{ place.text }}</h5>
+      <p>{{ place.place_name }}</p>
       <div align="right">
-        <button class="btn btn-outline-primary btn-sm">Direcciones</button>
+        <button 
+          class="btn btn-outline-primary btn-sm"
+          :class="( place.id === activePlace ) ? 'btn-outline-light' : 'btn-outline-primary'"
+        >
+          Direcciones
+        </button>
       </div>
     </li>
-  </ul>
-  <ul class="list-group mt-3">
-    <li class="list-group-item list-grup-item-action">
-      <h5>Nombre del lugar</h5>
-      <p>
-        Exercitation laborum Lorem aliqua velit nulla proident in aute ut ea sit
-        anim.
-      </p>
-      <div align="right">
-        <button class="btn btn-outline-primary btn-sm">Direcciones</button>
-      </div>
-    </li>
+
   </ul>
 </template>
 
