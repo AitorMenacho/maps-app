@@ -21,7 +21,6 @@ export default defineComponent({
                 map.value.flyTo({
                     center: place.center,
                     zoom: 14
-
                 })
 
             }
