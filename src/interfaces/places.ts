@@ -2,34 +2,29 @@
 
 export interface PlacesResponse {
     type:        string;
-    query:       number[];
+    query:       string[];
     features:    Feature[];
     attribution: string;
 }
 
 export interface Feature {
-    id:            string;
-    type:          string;
-    place_type:    string[];
-    relevance:     number;
-    properties:    Properties;
-    text_es:       string;
-    place_name_es: string;
-    text:          string;
-    place_name:    string;
-    bbox:          number[];
-    center:        number[];
-    geometry:      Geometry;
-    context:       Context[];
+    id:         string;
+    type:       string;
+    place_type: string[];
+    relevance:  number;
+    properties: Properties;
+    text:       string;
+    place_name: string;
+    center:     number[];
+    geometry:   Geometry;
+    context:    Context[];
+    bbox?:      number[];
 }
 
 export interface Context {
     id:          string;
-    wikidata:    string;
-    text_es:     string;
-    language_es: string;
     text:        string;
-    language:    string;
+    wikidata?:   string;
     short_code?: string;
 }
 
@@ -39,4 +34,6 @@ export interface Geometry {
 }
 
 export interface Properties {
+    accuracy?: string;
+    wikidata?: string;
 }

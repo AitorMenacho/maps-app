@@ -1,34 +1,52 @@
-import { ActionTree } from 'vuex';
-import { PlacesState } from './state';
-import { StateInterface } from '../index';
-
+import { ActionTree } from "vuex";
+import { PlacesState } from "./state";
+import { StateInterface } from "../index";
+import { searchApi } from "@/apis";
+import { PlacesResponse, Feature } from '../../interfaces/places';
 
 const actions: ActionTree<PlacesState, StateInterface> = {
-    getInitialLocation( { commit } ) {
-        
-        // todo: colocar loading
+  getInitialLocation({ commit }) {
+    // todo: colocar loading
 
-        navigator.geolocation.getCurrentPosition(
-            ( { coords } ) => commit('setLngLat', { lng: coords.longitude, lat: coords.latitude }),
-            ( err ) => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) =>
+        commit("setLngLat", { lng: coords.longitude, lat: coords.latitude }),
+      (err) => {
+        console.log(err);
+        throw new Error("No geolocation :( ");
+      }
+    );
+  },
 
-                console.log(err);
-                throw new Error( 'No geolocation :( ')
+  // Tod: colocar el valor de retorno
+  async searchPlacesByTerm({ commit, state }, query: string): Promise<Feature[]> {
 
-            }
-        )
+    if ( query.length === 0 ) {
+      
+      commit('setPlaces', [])
+      return []
+      
+    } 
 
-    },
+    if ( !state.userLocation ) {
 
-    // Tod: colocar el valor de retorno
-    async searchPlacesByTerm({ commit, state }, query: string) {
-
-        console.log('Vuex: ', query);
+      throw new Error('No hay ubicación del usuario')
 
     }
 
-}
+    commit('setIsLoadingPlaces')
 
+    const resp = await searchApi.get<PlacesResponse>(`/${query}.json`, {
+      params: {
+        proximity: state.userLocation?.join(","),
+      },
+    });
 
+    commit('setPlaces', resp.data.features)
+
+    return resp.data.features
+
+  },
+};
 
 export default actions;
