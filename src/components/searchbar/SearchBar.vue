@@ -6,6 +6,7 @@
             type="text" 
             class="form-control" 
             placeholder="Buscar lugares..."
+            v-model="searchTerm"
         />
 
         <SearchResults />

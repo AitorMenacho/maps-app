@@ -9,7 +9,7 @@
         anim.
       </p>
       <div align="right">
-        <button class="btn btn-outline-primary">Direcciones</button>
+        <button class="btn btn-outline-primary btn-sm">Direcciones</button>
       </div>
     </li>
   </ul>
@@ -21,7 +21,7 @@
         anim.
       </p>
       <div align="right">
-        <button class="btn btn-outline-primary">Direcciones</button>
+        <button class="btn btn-outline-primary btn-sm">Direcciones</button>
       </div>
     </li>
   </ul>
@@ -30,5 +30,13 @@
 <style scoped>
 li {
   cursor: pointer;
+}
+
+h5{
+  font-size: 15px !important;
+}
+
+p {
+  font-size: 12px;
 }
 </style>
