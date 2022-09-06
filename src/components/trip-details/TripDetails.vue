@@ -1,6 +1,6 @@
 
 <template>
-  <div class="trip-container column">
+  <div v-if="tiempo != undefined" class="trip-container column">
     <div class="col">
       Distancia: <strong>{{ distance }} Kms</strong>
     </div>
