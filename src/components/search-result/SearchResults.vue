@@ -24,7 +24,7 @@
           :class="( place.id === activePlace ) ? 'btn-outline-light' : 'btn-outline-primary'"
           @click.self="getRouteDirections(place)"
         >
-          Direcciones
+          Como llegar
         </button>
       </div>
     </li>

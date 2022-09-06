@@ -12,7 +12,7 @@ function state(): MapState {
         map: undefined,
         markers: [],
         distance: undefined,
-        duration: undefined
+        duration: undefined,
     }
 }
 

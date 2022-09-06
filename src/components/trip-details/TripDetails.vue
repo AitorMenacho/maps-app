@@ -1,14 +1,13 @@
 
 <template>
   <div class="trip-container column">
-    <div class="col">Distancia: <strong>{{ distance }} kms</strong></div>
+    <div class="col">Distancia: <strong>{{ distance }} Kms</strong></div>
     <div class="col">Duración: <strong>{{ duration }} minutos</strong></div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import state from '@/store/places/state';
 import { useMapStore } from '@/composables';
 
 export default defineComponent({
