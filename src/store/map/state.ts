@@ -5,6 +5,7 @@ export interface MapState {
     markers : Mapboxgl.Marker[];
     distance ?: number;
     duration ?: number;
+    tiempo ?: string;
 }
 
 function state(): MapState {
@@ -13,6 +14,7 @@ function state(): MapState {
         markers: [],
         distance: undefined,
         duration: undefined,
+        tiempo: undefined,
     }
 }
 

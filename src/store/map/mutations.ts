@@ -15,7 +15,9 @@ const mutation: MutationTree<MapState> = {
     kms /= 100
     state.distance = kms
 
-    state.duration = Math.floor( duration / 60 )
+    const hora = Math.floor(duration / 0xe10).toString()
+    const minuto = (Math.floor(duration / 0x3c) % 0x3c).toString()
+    state.tiempo = `${hora} Hora ${minuto} Minutos`
 
   },
 
@@ -52,6 +54,7 @@ const mutation: MutationTree<MapState> = {
       state.map.removeSource('RouteString')
       state.distance = undefined
       state.duration = undefined
+      state.tiempo = undefined
     }
 
   },

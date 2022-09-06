@@ -14,6 +14,7 @@ export const useMapStore = () => {
         map: computed( () => store.state.map.map ),
         distance: computed( () => store.state.map.distance ),
         duration: computed( () => store.state.map.duration ),
+        tiempo: computed(() => store.state.map.tiempo),
 
         //Getters
         isMapReady: computed<boolean>( () => store.getters['map/isMapReady'] ),
